@@ -14,9 +14,9 @@ const enum IrButton {
   Ok = 0x02,
   //% block="▶||"
   Right = 0xc2,
-  //% block="-"
+  //% block="－"
   Unused_3 = -3,
-  //% block="+"
+  //% block="＋"
   Down = 0xa8,
   //% block="EQ"
   Unused_4 = -4,
