@@ -47,9 +47,9 @@ const enum IrButton {
 }
 
 const enum IrButtonAction {
-  //% block="pressed"
+  //% block="按下"
   Pressed = 0,
-  //% block="released"
+  //% block="松开"
   Released = 1,
 }
 
@@ -234,22 +234,19 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId="makerbit_infrared_connect_receiver"
-  //% block="connect IR receiver at pin %pin and decode %protocol"
+  //% block="连接红外遥控接收器到引脚 %pin"
   //% pin.fieldEditor="gridpicker"
   //% pin.fieldOptions.columns=4
   //% pin.fieldOptions.tooltips="false"
   //% weight=90
-  export function connectIrReceiver(
-    pin: DigitalPin,
-    protocol: IrProtocol
-  ): void {
+  export function connectIrReceiver(pin: DigitalPin): void {
     initIrState();
 
     if (irState.protocol) {
       return;
     }
 
-    irState.protocol = protocol;
+      irState.protocol = IrProtocol.Keyestudio;
 
     enableIrMarkSpaceDetection(pin);
 
@@ -283,7 +280,7 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_on_ir_button
-  //% block="on IR button | %button | %action"
+  //% block="当红外遥控器的按键 | %button 被| %action"
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
@@ -307,7 +304,7 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_ir_button_pressed
-  //% block="IR button"
+  //% block="红外遥控器按键"
   //% weight=70
   export function irButton(): number {
     basic.pause(0); // Yield to support background processing when called in tight loops
@@ -323,7 +320,7 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_on_ir_datagram
-  //% block="on IR datagram received"
+  //% block="当接受到红外遥控器发送的数据时"
   //% weight=40
   export function onIrDatagram(handler: () => void) {
     initIrState();
@@ -336,7 +333,7 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_ir_datagram
-  //% block="IR datagram"
+  //% block="红外遥控器发送的数据"
   //% weight=30
   export function irDatagram(): string {
     basic.pause(0); // Yield to support background processing when called in tight loops
@@ -353,7 +350,7 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_was_any_ir_datagram_received
-  //% block="IR data was received"
+  //% block="接收到红外遥控器发送的数据？"
   //% weight=80
   export function wasIrDataReceived(): boolean {
     basic.pause(0); // Yield to support background processing when called in tight loops
@@ -375,7 +372,7 @@ namespace makerbit {
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
-  //% block="IR button code %button"
+  //% block="红外遥控器按键 %button"
   //% weight=60
   export function irButtonCode(button: IrButton): number {
     basic.pause(0); // Yield to support background processing when called in tight loops
